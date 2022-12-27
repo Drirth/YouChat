@@ -1,4 +1,6 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra')
+const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+puppeteer.use(StealthPlugin())
 
 /**
  * Sends a query to the YouChat API and returns the response.
@@ -7,7 +9,7 @@ const puppeteer = require('puppeteer');
  */
 async function youChat(query) {
   // Launch a new browser instance and create a new page.
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ executablePath: require('puppeteer').executablePath() });
   const page = await browser.newPage();
 
   // Encode the query for use in the API URL.
