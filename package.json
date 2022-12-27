@@ -1,20 +1,36 @@
 {
   "name": "youchat",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "A scraper for retrieving data from the YouChat API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Drirth/YouChat.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "youchat",
+    "ai",
+    "machine learning",
+    "chat"
+  ],
+  "author": "Drirth <>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Drirth/YouChat/issues"
   },
-  "homepage": "https://github.com/Drirth/YouChat#readme"
+  "homepage": "https://github.com/Drirth/YouChat#readme",
+  "dependencies": {
+    "puppeteer": "^7.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "jest": "^26.4.2",
+    "webpack": "^4.44.2"
+  },
+  "peerDependencies": {
+    "node": ">=10.0.0"
+  }
 }
