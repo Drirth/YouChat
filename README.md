@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to youchat 👋</h1>
+<h1 align="center">Welcome to YouChat 👋</h1>
 <p>
   <a href="https://www.npmjs.com/package/youchat" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/youchat.svg">
@@ -14,7 +14,7 @@
   </a>
 </p>
 
-> A scraper for retrieving data from the YouChat API
+> A simple scraper for retrieving data from the YouChat API
 
 ### 🏠 [Homepage](https://github.com/Drirth/YouChat#readme)
 
@@ -38,12 +38,6 @@ async function example() {
   console.log(response)
 }
 ```
-
-## Author
-
-👤 **Drirth <>**
-
-* Github: [@Drirth](https://github.com/Drirth)
 
 ## 🤝 Contributing
 
