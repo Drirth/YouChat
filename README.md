@@ -23,7 +23,7 @@
 ## Install
 
 ```sh
-npm install
+npm install youchat
 ```
 
 ## Usage/Examples
