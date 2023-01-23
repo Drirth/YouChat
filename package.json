@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/Drirth/YouChat#readme",
   "dependencies": {
-    "locate-chrome": "^0.1.1",
     "puppeteer": "^7.1.0",
     "puppeteer-extra": "^3.3.4",
     "puppeteer-extra-plugin-stealth": "^2.11.1"

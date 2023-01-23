@@ -1,4 +1,3 @@
-const locateChrome = require('locate-chrome');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
@@ -10,10 +9,9 @@ puppeteer.use(StealthPlugin());
  */
 async function youChat(query) {
   // Launch a new browser instance and create a new page.
-  const executablePath = await new Promise(resolve =>
-    locateChrome(arg => resolve(arg))
-  );
-  const browser = await puppeteer.launch({ executablePath: executablePath });
+  const browser = await puppeteer.launch({
+    executablePath: require('puppeteer').executablePath(),
+  });
   const page = await browser.newPage();
 
   // Encode the query for use in the API URL.
