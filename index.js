@@ -1,7 +1,7 @@
 const locateChrome = require('locate-chrome');
-const puppeteer = require('puppeteer-extra')
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
-puppeteer.use(StealthPlugin())
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
 
 /**
  * Sends a query to the YouChat API and returns the response.
@@ -10,7 +10,9 @@ puppeteer.use(StealthPlugin())
  */
 async function youChat(query) {
   // Launch a new browser instance and create a new page.
-  const executablePath = await new Promise(resolve => locateChrome(arg => resolve(arg)));
+  const executablePath = await new Promise(resolve =>
+    locateChrome(arg => resolve(arg))
+  );
   const browser = await puppeteer.launch({ executablePath: executablePath });
   const page = await browser.newPage();
 
@@ -20,20 +22,28 @@ async function youChat(query) {
   // Create a new Promise that will resolve with the API response.
   const output = new Promise((resolve, reject) => {
     // Listen for responses from the API.
-    page.on('response', async (response) => {
+    page.on('response', async response => {
       // If the response is from the correct API endpoint, process the response.
-      if (response.url() == `https://you.com/api/youchatStreaming?question=${input}&chat=%5B%5D`) {
+      if (
+        response.url() ==
+        `https://you.com/api/youchatStreaming?question=${input}&chat=%5B%5D`
+      ) {
         var text = await response.text();
         var array = text.split('event: token').slice(1).slice(0, -2);
-        var jsonArray = array.map(a => JSON.parse(a.replace(`\ndata: `, '').replace(`\n\n`, '')).token);
+        var jsonArray = array.map(
+          a => JSON.parse(a.replace(`\ndata: `, '').replace(`\n\n`, '')).token
+        );
         // Resolve the Promise with the processed response.
-        resolve(jsonArray.join("").trim());
+        resolve(jsonArray.join('').trim());
       }
     });
   });
 
   // Send the query to the API.
-  await page.goto(`https://you.com/api/youchatStreaming?question=${input}&chat=%5B%5D`, { waitUntil: 'networkidle0' });
+  await page.goto(
+    `https://you.com/api/youchatStreaming?question=${input}&chat=%5B%5D`,
+    { waitUntil: 'networkidle0' }
+  );
 
   // Close the browser instance.
   await browser.close();
